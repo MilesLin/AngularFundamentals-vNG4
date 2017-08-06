@@ -9,11 +9,13 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "start cmd /k npm run json-server & npm run ng-serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "json-server":"json-server api\\db.json --routes api\\routes.json",
+    "ng-serve": "ng serve"
   },
   "private": true,
   "dependencies": {
