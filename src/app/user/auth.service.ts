@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {IUser} from './user.model'
 import { Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
     let options = new RequestOptions({headers: headers});
     let loginInfo = { username: userName, password: password };
 
-    return this.http.post('/api/login', JSON.stringify(loginInfo), options)
+    return this.http.post(`${environment.host}/api/login`, JSON.stringify(loginInfo), options)
     .do(resp => {
       if(resp) {
         this.currentUser = <IUser>resp.json().user;
@@ -23,13 +24,13 @@ export class AuthService {
       return Observable.of(false);
     })
   }
-  
+
   isAuthenticated() {
     return !!this.currentUser;
   }
 
   checkAuthenticationStatus() {
-    return this.http.get('/api/currentIdentity').map((response: any) => {
+    return this.http.get(`${environment.host}/api/currentIdentity`).map((response: any) => {
       if(response._body) {
         return response.json();
       } else {
@@ -50,16 +51,16 @@ export class AuthService {
 
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    
-    return this.http.put(`/api/users/${this.currentUser.id}`, JSON.stringify(this.currentUser), options);
+
+    return this.http.put(`${environment.host}/api/users/${this.currentUser.id}`, JSON.stringify(this.currentUser), options);
   }
 
   logout() {
     this.currentUser = undefined;
-    
+
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    
-    return this.http.post('/api/logout', JSON.stringify({}), options);
+
+    return this.http.post(`${environment.host}/api/logout`, JSON.stringify({}), options);
   }
 }

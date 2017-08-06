@@ -1,0 +1,6 @@
+{    
+	"/api/*": "/$1",
+	"/sessions/search?*":"/events",
+	"/:resource": "/:resource",
+	"/:resource/:id": "/:resource/:id"
+}
