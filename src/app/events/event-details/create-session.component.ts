@@ -4,15 +4,15 @@ import { ISession, restrictedWords } from '../shared/index'
 
 @Component({
   selector: 'create-session',
-  templateUrl: '/app/events/event-details/create-session.component.html',
+  templateUrl: './create-session.component.html',
   styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input, .error select, .error textarea {background-color:#E3C3C5;}
-    .error ::-webkit-input-placeholder { color: #999; } 
+    .error ::-webkit-input-placeholder { color: #999; }
     .error :-moz-placeholder { color: #999; }
     .error ::-moz-placeholder { color: #999; }
     .error :ms-input-placeholder  { color: #999; }
-  `]  
+  `]
 })
 export class CreateSessionComponent implements OnInit {
   @Output() saveNewSession = new EventEmitter()
@@ -58,5 +58,5 @@ export class CreateSessionComponent implements OnInit {
   cancel() {
     this.cancelAddSession.emit()
   }
-  
+
 }

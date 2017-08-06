@@ -5,11 +5,11 @@ import { AuthService } from './auth.service'
 import { TOASTR_TOKEN, Toastr} from '../common/toastr.service'
 
 @Component({
-  templateUrl: 'app/user/profile.component.html',
+  templateUrl: './profile.component.html',
   styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input {background-color:#E3C3C5;}
-    .error ::-webkit-input-placeholder { color: #999; } 
+    .error ::-webkit-input-placeholder { color: #999; }
     .error :-moz-placeholder { color: #999; }
     .error ::-moz-placeholder { color: #999; }
     .error :ms-input-placeholder  { color: #999; }
@@ -19,10 +19,10 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   private firstName:FormControl
   private lastName:FormControl
-  
+
   constructor(private router:Router, private authService:AuthService,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {
-    
+
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
       firstName: this.firstName,
       lastName: this.lastName,
     })
-  } 
+  }
 
   cancel() {
     this.router.navigate(['events']);

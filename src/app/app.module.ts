@@ -1,11 +1,13 @@
-import { NgModule }      from '@angular/core'
+import { UserModule } from './user/user.module';
+import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
 import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { EventsAppComponent }  from './events-app.component'
-import { EventService,
+import { EventsAppComponent } from './events-app.component'
+import {
+  EventService,
   EventsListComponent,
   EventThumbnailComponent,
   EventDetailsComponent,
@@ -17,28 +19,32 @@ import { EventService,
   UpvoteComponent,
   VoterService,
   LocationValidator,
-  DurationPipe } from './events/index'
-import { JQ_TOKEN,
+  DurationPipe
+} from './events/index'
+import {
+  JQ_TOKEN,
   TOASTR_TOKEN,
   Toastr,
   CollapsibleWellComponent,
   SimpleModalComponent,
-  ModalTriggerDirective } from './common/index'
+  ModalTriggerDirective
+} from './common/index'
 import { NavBarComponent } from './nav/navbar.component'
 import { Error404Component } from './errors/404.component'
 import { appRoutes } from './routes'
 import { AuthService } from './user/auth.service'
 
-declare let toastr : Toastr;
-declare let jQuery : Object;
+export declare let toastr: Toastr;
+export declare let jQuery: Object;
 
 @NgModule({
   imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      ReactiveFormsModule,
-      RouterModule.forRoot(appRoutes) ],
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   declarations: [
     EventsAppComponent,
     EventsListComponent,
@@ -54,7 +60,7 @@ declare let jQuery : Object;
     UpvoteComponent,
     ModalTriggerDirective,
     LocationValidator,
-    DurationPipe ],
+    DurationPipe],
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
@@ -67,11 +73,11 @@ declare let jQuery : Object;
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     }],
-  bootstrap: [ EventsAppComponent ]
+  bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
 
-function checkDirtyState(component:CreateEventComponent) {
+export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
     return window.confirm('You have not saved this event, Do you really want to cancel?')
 

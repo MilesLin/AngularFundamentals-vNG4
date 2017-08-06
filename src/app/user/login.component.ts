@@ -3,7 +3,7 @@ import { AuthService } from './auth.service'
 import { Router } from '@angular/router'
 
 @Component({
-  templateUrl: 'app/user/login.component.html',
+  templateUrl: './login.component.html',
   styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
   `]
@@ -15,7 +15,7 @@ export class LoginComponent {
 
   }
 
-  login(formValues) { 
+  login(formValues) {
     this.authService.loginUser(formValues.userName, formValues.password).subscribe(resp => {
       if(!resp) {
         this.loginInvalid = true;
@@ -23,8 +23,8 @@ export class LoginComponent {
         this.router.navigate(['events'])
       }
     })
-    
-  } 
+
+  }
 
   cancel() {
     this.router.navigate(['events'])
