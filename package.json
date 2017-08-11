@@ -9,12 +9,12 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "start cmd /k npm run json-server & npm run ng-serve",
+    "start": "npm-run-all -p json-server ng-serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "json-server":"json-server api\\db.json --routes api\\routes.json",
+    "json-server": "json-server api\\db.json --routes api\\routes.json",
     "ng-serve": "ng serve"
   },
   "private": true,
@@ -52,6 +52,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "npm-run-all": "^4.0.2",
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
